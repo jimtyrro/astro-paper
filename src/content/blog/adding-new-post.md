@@ -5,7 +5,7 @@ author: Dmitriy Salynin
 tags:
   - docs
 pubDatetime: 2022-09-23T15:22:00.000Z
-modDatetime: 2023-12-21T18:30:00.000Z
+modDatetime: 2023-12-22T18:30:00.000Z
 description: >-
   Some rules & recommendations for creating or adding new posts using AstroPaper
   theme.
