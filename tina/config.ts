@@ -32,6 +32,20 @@ export default defineConfig({
         name: "blog",
         label: "Posts",
         path: "src/content/blog",
+        format: "md",
+        ui: {
+          filename: {
+            // if disabled, the editor can not edit the filename
+            readonly: false,
+            // Example of using a custom slugify function
+            slugify: (values) => {
+              // Values is an object containing all the values of the form. In this case it is {title?: string, topic?: string}
+              return `${values?.topic || 'no-topic'}-${values?.title
+                ?.toLowerCase()
+                .replace(/ /g, '-')}`
+            },
+          },
+        },
         defaultItem: () => {
           return {
             author: SITE.author,
