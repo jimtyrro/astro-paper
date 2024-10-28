@@ -5,7 +5,7 @@ export const SITE: Site = {
   author: "Dmitriy Salynin",
   profile: "https://5notedesign.com/",
   desc: "A minimal, responsive and SEO-friendly Astro blog theme.",
-  title: "5th note design - AstroPaper with Tina CMS",
+  title: "AstroPaper",
   ogImage: "astropaper-og.jpg",
   lightAndDarkMode: true,
   postPerIndex: 4,

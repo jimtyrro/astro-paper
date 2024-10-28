@@ -6,6 +6,7 @@ tags:
   - docs
   - markdown
 pubDatetime: 2024-10-27T18:30:00.000Z
+slug: markdown-in-astro
 description: >-
   Markdown is commonly used to author text-heavy content like blog posts and
   documentation.
