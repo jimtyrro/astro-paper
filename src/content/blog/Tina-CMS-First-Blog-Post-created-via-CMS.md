@@ -1,11 +1,12 @@
 ---
 title: Tina CMS First Blog Post created via CMS
 author: Dmitriy Salynin
+slug: tina-cms-first-blog-post-created-via-cms
 tags:
   - others
 pubDatetime: 2024-10-27T18:30:00.000Z
 description: >-
-  A Blog Post created via Tina CMS and autodeloyed from GitHub repository into
+  A Blog Post created via Tina CMS and auto deployed from GitHub repository into
   Cloudflare Pages
 ---
 
@@ -70,5 +71,3 @@ If you only want to deploy release-prefixed branches, then you could use the fol
 * Exclude Preview branches: \*
 
 This will deploy only branches starting with release/.
-
-
