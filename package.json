@@ -5,8 +5,8 @@
   "scripts": {
     "dev": "npx tinacms dev -c 'astro dev'",
     "start": "npx tinacms dev -c 'astro dev'",
-    "build": "npx tinacms dev -c 'astro build'",
-    "preview": "npx tinacms dev -c 'astro preview'",
+    "build": "npx tinacms build -c 'astro build'",
+    "preview": "npx tinacms dev  -c 'astro preview'",
     "sync": "npx tinacms dev -c 'astro sync'",
     "astro": "astro",
     "format:check": "prettier --check . --plugin=prettier-plugin-astro",
