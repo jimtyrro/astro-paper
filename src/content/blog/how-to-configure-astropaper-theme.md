@@ -1,15 +1,16 @@
 ---
-author: Sat Naing
-pubDatetime: 2022-09-23T04:58:53Z
-modDatetime: 2024-10-14T09:27:28.605Z
-title: How to configure AstroPaper theme
 slug: how-to-configure-astropaper-theme
-featured: true
-draft: false
+title: How to configure AstroPaper theme
+author: Dmitriy Salynin
 tags:
+  - modified
   - configuration
   - docs
+pubDatetime: 2022-09-23T04:58:53.000Z
+modDatetime: 2024-10-27T18:30:00.000Z
 description: How you can make AstroPaper theme absolutely yours.
+draft: false
+featured: true
 ---
 
 AstroPaper is a highly customizable Astro blog theme. With AstroPaper, you can customize everything according to your personal taste. This article will explain how you can make some customizations easily in the config file.
@@ -71,7 +72,7 @@ export const LOCALE = {
 ```
 
 `LOCALE.lang` will be used as HTML ISO Language code in `<html lang="en">`. If you don't specify this, default fallback will be set to `en`.
-`LOCALE.langTag` is used as [datetime locale](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString#locales). For this, you can specify an array of locales for fallback languages. Leave `LOCALE.langTag` empty `[]` to use the environment default at _build-_ and _run-time_.
+`LOCALE.langTag` is used as [datetime locale](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString#locales). For this, you can specify an array of locales for fallback languages. Leave `LOCALE.langTag` empty `[]` to use the environment default at *build-* and *run-time*.
 
 ## Configuring logo or title
 
@@ -93,11 +94,11 @@ If you specify `LOGO_IMAGE.enable` => `false`, AstroPaper will automatically con
 
 If you specify `LOGO_IMAGE.enable` => `true`, AstroPaper will use the logo image as the site's main logo.
 
-You have to specify `logo.png` or `logo.svg` under `/public/assets` directory. Currently, only svg and png image file formats are supported. (**_Important!_** _logo name has to be logo.png or logo.svg)_
+You have to specify `logo.png` or `logo.svg` under `/public/assets` directory. Currently, only svg and png image file formats are supported. (***Important!*** *logo name has to be logo.png or logo.svg)*
 
 If your logo image is png file format, you have to set `LOGO_IMAGE.svg` => `false`.
 
-It is recommended that you specify width and height of your logo image. You can do that by setting `LOGO_IMAGE.width` _and_ `LOGO_IMAGE.height`
+It is recommended that you specify width and height of your logo image. You can do that by setting `LOGO_IMAGE.width` *and* `LOGO_IMAGE.height`
 
 ## Configuring social links
 

@@ -90,7 +90,7 @@ export default function SearchBar({ searchList }: Props) {
           value={inputVal}
           onChange={handleChange}
           autoComplete="off"
-          // autoFocus
+          // autoFocus - disabled because of accessibility concerns. Automatically focusing a form control can confuse visually-impaired people using screen-reading technology and people with cognitive impairments. When autofocus is assigned, screen-readers "teleport" their user to the form control without warning them beforehand.
           ref={inputRef}
         />
       </label>

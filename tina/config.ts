@@ -1,4 +1,5 @@
 import { defineConfig } from "tinacms";
+import { SITE } from "../src/config";
 
 // Your hosting provider likely exposes this as an environment variable
 const branch =
@@ -29,9 +30,15 @@ export default defineConfig({
   schema: {
     collections: [
       {
-        name: "post",
+        name: "blog",
         label: "Posts",
-        path: "content/posts",
+        path: "src/content/blog",
+        defaultItem: () => {
+          return {
+            author: SITE.author,
+            tags: ["others"],
+          }
+        },
         fields: [
           {
             type: "string",
@@ -39,6 +46,60 @@ export default defineConfig({
             label: "Title",
             isTitle: true,
             required: true,
+          },
+          {
+            type: "string",
+            name: "author",
+            label: "Author",
+            required: true,
+          },
+          {
+            type: "string",
+            name: "tags",
+            label: "Tags",
+            list: true,
+          },
+          {
+            type: "datetime",
+            name: "pubDatetime",
+            label: "Publish Date",
+            required: true,
+          },
+          {
+            type: "datetime",
+            name: "modDatetime",
+            label: "Modify Date",
+            required: false,
+          },
+          {
+            type: "image",
+            name: "ogImage",
+            label: "OG Image",
+            required: false,
+          },
+          {
+            type: "string",
+            name: "description",
+            label: "Description",
+            required: true,
+          },
+          {
+            type: "string",
+            name: "canonicalURL",
+            label: "Canonical URL",
+            required: false,
+          },
+          {
+            type: "boolean",
+            name: "draft",
+            label: "Draft",
+            required: false,
+          },
+          {
+            type: "boolean",
+            name: "featured",
+            label: "Featured",
+            required: false,
           },
           {
             type: "rich-text",
