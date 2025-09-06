@@ -72,7 +72,7 @@ export const LOCALE = {
 ```
 
 `LOCALE.lang` will be used as HTML ISO Language code in `<html lang="en">`. If you don't specify this, default fallback will be set to `en`.
-`LOCALE.langTag` is used as [datetime locale](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString#locales). For this, you can specify an array of locales for fallback languages. Leave `LOCALE.langTag` empty `[]` to use the environment default at *build-* and *run-time*.
+`LOCALE.langTag` is used as [datetime locale](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString#locales). For this, you can specify an array of locales for fallback languages. Leave `LOCALE.langTag` empty `[]` to use the environment default at _build-_ and _run-time_.
 
 ## Configuring logo or title
 
@@ -94,11 +94,11 @@ If you specify `LOGO_IMAGE.enable` => `false`, AstroPaper will automatically con
 
 If you specify `LOGO_IMAGE.enable` => `true`, AstroPaper will use the logo image as the site's main logo.
 
-You have to specify `logo.png` or `logo.svg` under `/public/assets` directory. Currently, only svg and png image file formats are supported. (***Important!*** *logo name has to be logo.png or logo.svg)*
+You have to specify `logo.png` or `logo.svg` under `/public/assets` directory. Currently, only svg and png image file formats are supported. (**_Important!_** _logo name has to be logo.png or logo.svg)_
 
 If your logo image is png file format, you have to set `LOGO_IMAGE.svg` => `false`.
 
-It is recommended that you specify width and height of your logo image. You can do that by setting `LOGO_IMAGE.width` *and* `LOGO_IMAGE.height`
+It is recommended that you specify width and height of your logo image. You can do that by setting `LOGO_IMAGE.width` _and_ `LOGO_IMAGE.height`
 
 ## Configuring social links
 

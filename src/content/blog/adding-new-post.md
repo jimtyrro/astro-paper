@@ -25,17 +25,17 @@ Here is the list of frontmatter property for each post.
 
 | Property           | Description                                                                                 | Remark                                        |
 | ------------------ | ------------------------------------------------------------------------------------------- | --------------------------------------------- |
-| ***title***        | Title of the post. (h1)                                                                     | required<sup>\*</sup>                         |
-| ***description***  | Description of the post. Used in post excerpt and site description of the post.             | required<sup>\*</sup>                         |
-| ***pubDatetime***  | Published datetime in ISO 8601 format.                                                      | required<sup>\*</sup>                         |
-| ***modDatetime***  | Modified datetime in ISO 8601 format. (only add this property when a blog post is modified) | optional                                      |
-| ***author***       | Author of the post.                                                                         | default = SITE.author                         |
-| ***slug***         | Slug for the post. This field is optional but cannot be an empty string. (slug: ""❌)        | default = slugified file name                 |
-| ***featured***     | Whether or not display this post in featured section of home page                           | default = false                               |
-| ***draft***        | Mark this post 'unpublished'.                                                               | default = false                               |
-| ***tags***         | Related keywords for this post. Written in array yaml format.                               | default = others                              |
-| ***ogImage***      | OG image of the post. Useful for social media sharing and SEO.                              | default = SITE.ogImage or generated OG image  |
-| ***canonicalURL*** | Canonical URL (absolute), in case the article already exists on other source.               | default = `Astro.site` + `Astro.url.pathname` |
+| **_title_**        | Title of the post. (h1)                                                                     | required<sup>\*</sup>                         |
+| **_description_**  | Description of the post. Used in post excerpt and site description of the post.             | required<sup>\*</sup>                         |
+| **_pubDatetime_**  | Published datetime in ISO 8601 format.                                                      | required<sup>\*</sup>                         |
+| **_modDatetime_**  | Modified datetime in ISO 8601 format. (only add this property when a blog post is modified) | optional                                      |
+| **_author_**       | Author of the post.                                                                         | default = SITE.author                         |
+| **_slug_**         | Slug for the post. This field is optional but cannot be an empty string. (slug: ""❌)       | default = slugified file name                 |
+| **_featured_**     | Whether or not display this post in featured section of home page                           | default = false                               |
+| **_draft_**        | Mark this post 'unpublished'.                                                               | default = false                               |
+| **_tags_**         | Related keywords for this post. Written in array yaml format.                               | default = others                              |
+| **_ogImage_**      | OG image of the post. Useful for social media sharing and SEO.                              | default = SITE.ogImage or generated OG image  |
+| **_canonicalURL_** | Canonical URL (absolute), in case the article already exists on other source.               | default = `Astro.site` + `Astro.url.pathname` |
 
 > Tip! You can get ISO 8601 datetime by running `new Date().toISOString()` in the console. Make sure you remove quotes though.
 
@@ -160,11 +160,11 @@ When you put images in the blog post (especially for images under `public` direc
 
 My recommendation for image compression sites.
 
-* [TinyPng](https://tinypng.com/)
-* [TinyJPG](https://tinyjpg.com/)
+- [TinyPng](https://tinypng.com/)
+- [TinyJPG](https://tinyjpg.com/)
 
 ### OG Image
 
-The default OG image will be placed if a post does not specify the OG image. Though not required, OG image related to the post should be specify in the frontmatter. The recommended size for OG image is ***1200 X 640*** px.
+The default OG image will be placed if a post does not specify the OG image. Though not required, OG image related to the post should be specify in the frontmatter. The recommended size for OG image is **_1200 X 640_** px.
 
 > Since AstroPaper v1.4.0, OG images will be generated automatically if not specified. Check out [the announcement](https://astro-paper.pages.dev/posts/dynamic-og-image-generation-in-astropaper-blog-posts/).

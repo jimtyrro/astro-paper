@@ -39,7 +39,7 @@ Collections also allow you to use content-specfic, optimized API for querying an
 
 After importing or querying Markdown files, you can write dynamic HTML templates in your .astro components that include frontmatter data and body content.
 
-src/posts/great-post.md---title: 'The greatest post of all time'author: 'Ben'---Here is my \_great\_ post!src/pages/my-posts.astro---import \* as greatPost from '../posts/great-post.md';const posts = Object.values(await import.meta.glob('../posts/\*.md', { eager: true }));---\<p>{greatPost.frontmatter.title}\</p>\<p>Written by: {greatPost.frontmatter.author}\</p>\<p>Post Archive:\</p>\<ul>  {posts.map(post => \<li>\<a href={post.url}>{post.frontmatter.title}\</a>\</li>)}\</ul>
+src/posts/great-post.md---title: 'The greatest post of all time'author: 'Ben'---Here is my \_great\_ post!src/pages/my-posts.astro---import \* as greatPost from '../posts/great-post.md';const posts = Object.values(await import.meta.glob('../posts/\*.md', { eager: true }));---\<p>{greatPost.frontmatter.title}\</p>\<p>Written by: {greatPost.frontmatter.author}\</p>\<p>Post Archive:\</p>\<ul> {posts.map(post => \<li>\<a href={post.url}>{post.frontmatter.title}\</a>\</li>)}\</ul>
 
 ### Available Properties
 
@@ -59,17 +59,17 @@ See the full [CollectionEntry type](https://docs.astro.build/en/reference/module
 
 The following exported properties are available in your .astro component when importing Markdown using import or import.meta.glob():
 
-* file - The absolute file path (e.g. /home/user/projects/.../file.md).
-* url - The URL of the page (e.g. /en/guides/markdown-content).
-* frontmatter - Contains any data specified in the file’s YAML frontmatter.
-* \<Content /> - A component that returns the full, rendered contents of the file.
-* rawContent() - A function that returns the raw Markdown document as a string.
-* compiledContent() - A function that returns the Markdown document compiled to an HTML string.
-* getHeadings() - An async function that returns an array of all headings (\<h1> to \<h6>) in the file with the type: { depth: number; slug: string; text: string }\[]. Each heading’s slug corresponds to the generated ID for a given heading and can be used for anchor links.
+- file - The absolute file path (e.g. /home/user/projects/.../file.md).
+- url - The URL of the page (e.g. /en/guides/markdown-content).
+- frontmatter - Contains any data specified in the file’s YAML frontmatter.
+- \<Content /> - A component that returns the full, rendered contents of the file.
+- rawContent() - A function that returns the raw Markdown document as a string.
+- compiledContent() - A function that returns the Markdown document compiled to an HTML string.
+- getHeadings() - An async function that returns an array of all headings (\<h1> to \<h6>) in the file with the type: { depth: number; slug: string; text: string }\[]. Each heading’s slug corresponds to the generated ID for a given heading and can be used for anchor links.
 
 An example Markdown blog post may pass the following Astro.props object:
 
-Astro.props = {  file: "/home/user/projects/.../file.md",  url: "/en/guides/markdown-content/",  frontmatter: {    /\*\* Frontmatter from a blog post \*/    title: "Astro 0.18 Release",    date: "Tuesday, July 27 2021",    author: "Matthew Phillips",    description: "Astro 0.18 is our biggest release since Astro launch.",  },  getHeadings: () => \[    {"depth": 1, "text": "Astro 0.18 Release", "slug": "astro-018-release"},    {"depth": 2, "text": "Responsive partial hydration", "slug": "responsive-partial-hydration"}    /\* ... \*/  ],  rawContent: () => "# Astro 0.18 Release\nA little over a month ago, the first public beta \[...]",  compiledContent: () => "\<h1>Astro 0.18 Release\</h1>\n\<p>A little over a month ago, the first public beta \[...]\</p>",}
+Astro.props = { file: "/home/user/projects/.../file.md", url: "/en/guides/markdown-content/", frontmatter: { /\*\* Frontmatter from a blog post \*/ title: "Astro 0.18 Release", date: "Tuesday, July 27 2021", author: "Matthew Phillips", description: "Astro 0.18 is our biggest release since Astro launch.", }, getHeadings: () => \[ {"depth": 1, "text": "Astro 0.18 Release", "slug": "astro-018-release"}, {"depth": 2, "text": "Responsive partial hydration", "slug": "responsive-partial-hydration"} /\* ... \*/ ], rawContent: () => "# Astro 0.18 Release\nA little over a month ago, the first public beta \[...]", compiledContent: () => "\<h1>Astro 0.18 Release\</h1>\n\<p>A little over a month ago, the first public beta \[...]\</p>",}
 
 ## The \<Content /> Component
 
@@ -101,7 +101,7 @@ You can customize these heading IDs by adding a rehype plugin that injects id at
 
 By default, Astro injects id attributes after your rehype plugins have run. If one of your custom rehype plugins needs to access the IDs injected by Astro, you can import and use Astro’s rehypeHeadingIds plugin directly. Be sure to add rehypeHeadingIds before any plugins that rely on it:
 
-astro.config.mjsimport { defineConfig } from 'astro/config';import { rehypeHeadingIds } from '@astrojs/markdown-remark';import { otherPluginThatReliesOnHeadingIDs } from 'some/plugin/source';export default defineConfig({  markdown: {    rehypePlugins: \[      rehypeHeadingIds,      otherPluginThatReliesOnHeadingIDs,    ],  },});
+astro.config.mjsimport { defineConfig } from 'astro/config';import { rehypeHeadingIds } from '@astrojs/markdown-remark';import { otherPluginThatReliesOnHeadingIDs } from 'some/plugin/source';export default defineConfig({ markdown: { rehypePlugins: \[ rehypeHeadingIds, otherPluginThatReliesOnHeadingIDs, ], },});
 
 ## Markdown Plugins
 
@@ -123,7 +123,7 @@ We encourage you to browse [awesome-remark](https://github.com/remarkjs/awesome-
 
 This example applies [remark-toc](https://github.com/remarkjs/remark-toc) and [rehype-accessible-emojis](https://www.npmjs.com/package/rehype-accessible-emojis) to Markdown files:
 
-astro.config.mjsimport { defineConfig } from 'astro/config';import remarkToc from 'remark-toc';import { rehypeAccessibleEmojis } from 'rehype-accessible-emojis';export default defineConfig({  markdown: {    remarkPlugins: \[ \[remarkToc, { heading: 'toc', maxDepth: 3 } ] ],    rehypePlugins: \[rehypeAccessibleEmojis],  },});
+astro.config.mjsimport { defineConfig } from 'astro/config';import remarkToc from 'remark-toc';import { rehypeAccessibleEmojis } from 'rehype-accessible-emojis';export default defineConfig({ markdown: { remarkPlugins: \[ \[remarkToc, { heading: 'toc', maxDepth: 3 } ] ], rehypePlugins: \[rehypeAccessibleEmojis], },});
 
 ### Customizing a plugin
 
@@ -133,7 +133,7 @@ In order to customize a plugin, provide an options object after it in a nested a
 
 The example below adds the [heading option to the remarkToc plugin](https://github.com/remarkjs/remark-toc#options) to change where the table of contents is placed, and the [behavior option to the rehype-autolink-headings plugin](https://github.com/rehypejs/rehype-autolink-headings#options) in order to add the anchor tag after the headline text.
 
-astro.config.mjsimport remarkToc from 'remark-toc';import rehypeSlug from 'rehype-slug';import rehypeAutolinkHeadings from 'rehype-autolink-headings';export default {  markdown: {    remarkPlugins: \[ \[remarkToc, { heading: "contents"} ] ],    rehypePlugins: \[rehypeSlug, \[rehypeAutolinkHeadings, { behavior: 'append' }]],  },}
+astro.config.mjsimport remarkToc from 'remark-toc';import rehypeSlug from 'rehype-slug';import rehypeAutolinkHeadings from 'rehype-autolink-headings';export default { markdown: { remarkPlugins: \[ \[remarkToc, { heading: "contents"} ] ], rehypePlugins: \[rehypeSlug, \[rehypeAutolinkHeadings, { behavior: 'append' }]], },}
 
 ### Modifying frontmatter programmatically
 
@@ -141,8 +141,8 @@ astro.config.mjsimport remarkToc from 'remark-toc';import rehypeSlug from 'rehyp
 
 You can add frontmatter properties to all of your Markdown and MDX files by using a [remark or rehype plugin](https://docs.astro.build/en/guides/markdown-content/#markdown-plugins).
 
-1. Append a customProperty to the data.astro.frontmatter property from your plugin’s file argument:example-remark-plugin.mjsexport function exampleRemarkPlugin() {  // All remark and rehype plugins return a separate function  return function (tree, file) {    file.data.astro.frontmatter.customProperty = 'Generated property';  }}TipAdded in: astro\@2.0.0data.astro.frontmatter contains all properties from a given Markdown or MDX document. This allows you to modify existing frontmatter properties, or compute new properties from this existing frontmatter.
-2. Apply this plugin to your markdown or mdx integration config:astro.config.mjsimport { defineConfig } from 'astro/config';import { exampleRemarkPlugin } from './example-remark-plugin.mjs';export default defineConfig({  markdown: {    remarkPlugins: \[exampleRemarkPlugin]  },});orastro.config.mjsimport { defineConfig } from 'astro/config';import { exampleRemarkPlugin } from './example-remark-plugin.mjs';export default defineConfig({  integrations: \[    mdx({      remarkPlugins: \[exampleRemarkPlugin],    }),  ],});
+1. Append a customProperty to the data.astro.frontmatter property from your plugin’s file argument:example-remark-plugin.mjsexport function exampleRemarkPlugin() { // All remark and rehype plugins return a separate function return function (tree, file) { file.data.astro.frontmatter.customProperty = 'Generated property'; }}TipAdded in: astro\@2.0.0data.astro.frontmatter contains all properties from a given Markdown or MDX document. This allows you to modify existing frontmatter properties, or compute new properties from this existing frontmatter.
+2. Apply this plugin to your markdown or mdx integration config:astro.config.mjsimport { defineConfig } from 'astro/config';import { exampleRemarkPlugin } from './example-remark-plugin.mjs';export default defineConfig({ markdown: { remarkPlugins: \[exampleRemarkPlugin] },});orastro.config.mjsimport { defineConfig } from 'astro/config';import { exampleRemarkPlugin } from './example-remark-plugin.mjs';export default defineConfig({ integrations: \[ mdx({ remarkPlugins: \[exampleRemarkPlugin], }), ],});
 
 Now, every Markdown or MDX file will have customProperty in its frontmatter, making it available when [importing your markdown](https://docs.astro.build/en/guides/markdown-content/#importing-markdown) and from [the Astro.props.frontmatter property in your layouts](https://docs.astro.build/en/guides/markdown-content/#frontmatter-layout-property).
 
@@ -156,11 +156,11 @@ Astro’s MDX integration will extend [your project’s existing Markdown config
 
 The following example disables GitHub-Flavored Markdown and applies a different set of remark plugins for MDX files:
 
-astro.config.mjsimport { defineConfig } from 'astro/config';import mdx from '@astrojs/mdx';export default defineConfig({  markdown: {    syntaxHighlight: 'prism',    remarkPlugins: \[remarkPlugin1],    gfm: true,  },  integrations: \[    mdx({      // \`syntaxHighlight\` inherited from Markdown      // Markdown \`remarkPlugins\` ignored,      // only \`remarkPlugin2\` applied.      remarkPlugins: \[remarkPlugin2],      // \`gfm\` overridden to \`false\`      gfm: false,    })  ]});
+astro.config.mjsimport { defineConfig } from 'astro/config';import mdx from '@astrojs/mdx';export default defineConfig({ markdown: { syntaxHighlight: 'prism', remarkPlugins: \[remarkPlugin1], gfm: true, }, integrations: \[ mdx({ // \`syntaxHighlight\` inherited from Markdown // Markdown \`remarkPlugins\` ignored, // only \`remarkPlugin2\` applied. remarkPlugins: \[remarkPlugin2], // \`gfm\` overridden to \`false\` gfm: false, }) ]});
 
 To avoid extending your Markdown config from MDX, set [the extendMarkdownConfig option](https://docs.astro.build/en/guides/integrations-guide/mdx/#extendmarkdownconfig) (enabled by default) to false:
 
-astro.config.mjsimport { defineConfig } from 'astro/config';import mdx from '@astrojs/mdx';export default defineConfig({  markdown: {    remarkPlugins: \[remarkPlugin],  },  integrations: \[    mdx({      // Markdown config now ignored      extendMarkdownConfig: false,      // No \`remarkPlugins\` applied    })  ]});
+astro.config.mjsimport { defineConfig } from 'astro/config';import mdx from '@astrojs/mdx';export default defineConfig({ markdown: { remarkPlugins: \[remarkPlugin], }, integrations: \[ mdx({ // Markdown config now ignored extendMarkdownConfig: false, // No \`remarkPlugins\` applied }) ]});
 
 ## Syntax Highlighting
 
@@ -168,9 +168,9 @@ astro.config.mjsimport { defineConfig } from 'astro/config';import mdx from '@as
 
 Astro comes with built-in support for [Shiki](https://shiki.style/) and [Prism](https://prismjs.com/). This provides syntax highlighting for:
 
-* all code fences (\`\`\`) used in a Markdown or MDX file.
-* content within the [built-in \<Code /> component](https://docs.astro.build/en/reference/components-reference/#code-) (powered by Shiki).
-* content within the [\<Prism /> component](https://docs.astro.build/en/reference/components-reference/#prism-) (powered by Prism).
+- all code fences (\`\`\`) used in a Markdown or MDX file.
+- content within the [built-in \<Code /> component](https://docs.astro.build/en/reference/components-reference/#code-) (powered by Shiki).
+- content within the [\<Prism /> component](https://docs.astro.build/en/reference/components-reference/#prism-) (powered by Prism).
 
 Shiki is enabled by default, preconfigured with the github-dark theme. The compiled output will be limited to inline styles without any extraneous CSS classes, stylesheets, or client-side JS.
 
@@ -180,7 +180,7 @@ Shiki is enabled by default, preconfigured with the github-dark theme. The compi
 
 Shiki is our default syntax highlighter. You can configure all options via the shikiConfig object like so:
 
-astro.config.mjsimport { defineConfig } from 'astro/config';export default defineConfig({  markdown: {    shikiConfig: {      // Choose from Shiki's built-in themes (or add your own)      // https\://shiki.style/themes      theme: 'dracula',      // Alternatively, provide multiple themes      // See note below for using dual light/dark themes      themes: {        light: 'github-light',        dark: 'github-dark',      },      // Disable the default colors      // https\://shiki.style/guide/dual-themes#without-default-color      // (Added in v4.12.0)      defaultColor: false,      // Add custom languages      // Note: Shiki has countless langs built-in, including .astro!      // https\://shiki.style/languages      langs: \[],      // Add custom aliases for languages      // Map an alias to a Shiki language ID: https\://shiki.style/languages#bundled-languages      // https\://shiki.style/guide/load-lang#custom-language-aliases      langAlias: {        cjs: "javascript"      },      // Enable word wrap to prevent horizontal scrolling      wrap: true,      // Add custom transformers: https\://shiki.style/guide/transformers      // Find common transformers: https\://shiki.style/packages/transformers      transformers: \[],    },  },});
+astro.config.mjsimport { defineConfig } from 'astro/config';export default defineConfig({ markdown: { shikiConfig: { // Choose from Shiki's built-in themes (or add your own) // https\://shiki.style/themes theme: 'dracula', // Alternatively, provide multiple themes // See note below for using dual light/dark themes themes: { light: 'github-light', dark: 'github-dark', }, // Disable the default colors // https\://shiki.style/guide/dual-themes#without-default-color // (Added in v4.12.0) defaultColor: false, // Add custom languages // Note: Shiki has countless langs built-in, including .astro! // https\://shiki.style/languages langs: \[], // Add custom aliases for languages // Map an alias to a Shiki language ID: https\://shiki.style/languages#bundled-languages // https\://shiki.style/guide/load-lang#custom-language-aliases langAlias: { cjs: "javascript" }, // Enable word wrap to prevent horizontal scrolling wrap: true, // Add custom transformers: https\://shiki.style/guide/transformers // Find common transformers: https\://shiki.style/packages/transformers transformers: \[], }, },});
 
 Customizing Shiki themes
 
@@ -192,7 +192,7 @@ Astro code blocks are styled using the .astro-code class. When following Shiki�
 
 Instead of using one of Shiki’s predefined themes, you can import a custom theme from a local file.
 
-astro.config.mjsimport { defineConfig } from 'astro/config';import customTheme from './my-shiki-theme.json';export default defineConfig({  markdown: {    shikiConfig: { theme: customTheme },  },});
+astro.config.mjsimport { defineConfig } from 'astro/config';import customTheme from './my-shiki-theme.json';export default defineConfig({ markdown: { shikiConfig: { theme: customTheme }, },});
 
 We also suggest reading [Shiki’s own theme documentation](https://shiki.style/themes) to explore more about themes, light vs dark mode toggles, or styling via CSS variables.
 
@@ -202,7 +202,7 @@ We also suggest reading [Shiki’s own theme documentation](https://shiki.style/
 
 If you’d like to switch to 'prism' by default, or disable syntax highlighting entirely, you can use the markdown.syntaxHighlighting config object:
 
-astro.config.mjsimport { defineConfig } from 'astro/config';export default defineConfig({  markdown: {    // Can be 'shiki' (default), 'prism' or false to disable highlighting    syntaxHighlight: 'prism',  },});
+astro.config.mjsimport { defineConfig } from 'astro/config';export default defineConfig({ markdown: { // Can be 'shiki' (default), 'prism' or false to disable highlighting syntaxHighlight: 'prism', },});
 
 #### Prism configuration
 
@@ -252,7 +252,7 @@ src/pages/posts/post-1.md---layout: ../../layouts/BlogPostLayout.astrotitle: Ast
 
 This layout component is a regular Astro component with [specific properties automatically available](https://docs.astro.build/en/basics/layouts/#markdown-layout-props) through Astro.props for your Astro template. For example, you can access your Markdown file’s frontmatter properties through Astro.props.frontmatter:
 
-src/layouts/BlogPostLayout.astro---const {frontmatter} = Astro.props;---\<html>  \<!-- ... -->  \<h1>{frontmatter.title}\</h1>  \<h2>Post author: {frontmatter.author}\</h2>  \<p>{frontmatter.description}\</p>  \<slot /> \<!-- Markdown content is injected here -->  \<!-- ... -->\</html>
+src/layouts/BlogPostLayout.astro---const {frontmatter} = Astro.props;---\<html> \<!-- ... --> \<h1>{frontmatter.title}\</h1> \<h2>Post author: {frontmatter.author}\</h2> \<p>{frontmatter.description}\</p> \<slot /> \<!-- Markdown content is injected here --> \<!-- ... -->\</html>
 
 You can also [style your Markdown](https://docs.astro.build/en/guides/styling/#markdown-styling) in your layout component.
 
